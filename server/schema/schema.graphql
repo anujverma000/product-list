@@ -1,0 +1,16 @@
+# import Product from "product.graphql"
+# import Brand from "brand.graphql"
+# import Type from "type.graphql"
+
+type Query {
+  products(query: String, brand: String, type: String, limit: Int, offset: Int, sort: OrderByInput): [Product!]
+  brands(query: String): [Brand!]
+  types(query: String): [Type!]
+}
+
+enum OrderByInput {
+  name_asc
+  name_desc
+  price_asc
+  price_desc
+}
