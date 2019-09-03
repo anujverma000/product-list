@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { MOBILE, TABLET, DESKTOP} from './device';
+import { MOBILE, TABLET, DESKTOP} from './device'
 
 const Container = styled.div`
   margin: auto;
@@ -19,4 +19,4 @@ const Container = styled.div`
   }
 `
 
-export default Container;
+export default Container

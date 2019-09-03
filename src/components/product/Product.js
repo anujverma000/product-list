@@ -4,8 +4,8 @@ import { LOCALE, CURRENCY } from '../../constants'
 
 export class Product extends PureComponent {
   render() {
-    const { image, brand, name, type, price, size } = this.props;
-    const formattedPrice = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: CURRENCY }).format(price/100);
+    const { image, brand, name, type, price, size } = this.props
+    const formattedPrice = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: CURRENCY }).format(price/100)
     return (
       <Root>
         <ProductPhoto src={ image } loading="lazy" alt={ name }/>
@@ -32,7 +32,7 @@ const Root = styled.div`
   padding: 16px;
   margin: 8px auto;
   &:hover{
-    border: solid 1px #d5d5d5;
+    outline: solid 1px #d5d5d5;
     cursor: pointer;
   }
 `

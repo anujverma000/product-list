@@ -1,17 +1,12 @@
 import React from 'react'
 import Container from './styled-guide/Container'
-import Brands from './Brands'
-import Types from './Types'
 import ProductList from './components/product/ProductList'
+import FilterPanel from './components/filters/FilterPanel'
 
-function App() {
-  return (
-    <Container>
-      <Brands/>
-      <Types/>
-      <ProductList/>
-    </Container>
-  )
-}
+const App = () =>
+  <Container>
+    <FilterPanel/>
+    <ProductList/>
+  </Container>
 
 export default App

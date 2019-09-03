@@ -1,6 +1,7 @@
 import React from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo-hooks'
+import SelectDropDown from '../../styled-guide/SelectDropDown'
 
 const GET_BRANDS = gql`
   {
@@ -10,7 +11,7 @@ const GET_BRANDS = gql`
   }
 `
 
-function App() {
+const BrandFilter = () => {
   const { data, error, loading } = useQuery(GET_BRANDS)
   if (loading) {
     return <div>Loading...</div>
@@ -19,13 +20,7 @@ function App() {
     return <div>Error! {error.message}</div>
   }
 
-  return (
-    <ul>
-      {data.brands.map(brand => (
-        <li key={brand.name}>{brand.name}</li>
-      ))}
-    </ul>
-  )
+  return <SelectDropDown optionsList={data.brands} selectorText="Select Brand"></SelectDropDown>
 }
 
-export default App
+export default BrandFilter

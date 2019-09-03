@@ -1,2 +1,2 @@
-export const LOCALE = 'de-DE';
-export const CURRENCY = 'EUR';
+export const LOCALE = 'de-DE'
+export const CURRENCY = 'EUR'

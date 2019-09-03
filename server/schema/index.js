@@ -5,4 +5,4 @@ const typeDefs = importSchema('./schema/schema.graphql')
 
 const schema = makeExecutableSchema({ typeDefs })
 
-module.exports = schema;
+module.exports = schema
