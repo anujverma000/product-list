@@ -1,7 +1,8 @@
 {
   "name": "product-list",
   "version": "0.1.0",
-  "main": "./src/index.js",
+  "main": "/src/index.js",
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -9,6 +10,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "graphql": "^14.5.4",
     "apollo-boost": "^0.4.4",
     "graphql-tag": "^2.10.1",
     "react": "^16.9.0",
