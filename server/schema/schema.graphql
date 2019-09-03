@@ -3,7 +3,7 @@
 # import Type from "type.graphql"
 
 type Query {
-  products(query: String, brand: String, type: String, limit: Int, offset: Int, sort: OrderByInput): [Product!]
+  products(query: String, brands: [String!], types: [String!], limit: Int, offset: Int, sort: OrderByInput): [Product!]
   brands(query: String): [Brand!]
   types(query: String): [Type!]
 }
