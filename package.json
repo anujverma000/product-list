@@ -1,18 +1,24 @@
 {
   "name": "product-list",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
-  },
+  "main": "./src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "dependencies": {
+    "apollo-boost": "^0.4.4",
+    "graphql-tag": "^2.10.1",
+    "react": "^16.9.0",
+    "react-apollo": "^3.0.1",
+    "react-apollo-hooks": "^0.5.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {},
   "eslintConfig": {
     "extends": "react-app"
   },
