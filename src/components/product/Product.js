@@ -1,16 +1,20 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import { LOCALE, CURRENCY } from '../../constants'
 
 export class Product extends PureComponent {
   render() {
-    const { image, brand, name, type, price, size } = this.props
+    const { image, brand, name, type, price, size } = this.props;
+    const formattedPrice = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: CURRENCY }).format(price/100);
     return (
       <Root>
         <ProductPhoto src={ image } loading="lazy" alt={ name }/>
         <ProductBrand>{ brand }</ProductBrand>
         <ProductName>{ name }</ProductName>
         <ProductType>{ type }</ProductType>
-        <ProductPrice>{ price }</ProductPrice> / <ProductSize>{ size }</ProductSize>
+        <ProductDetails>
+          <ProductPrice>{ formattedPrice }</ProductPrice> / <ProductSize>{ size }</ProductSize>
+        </ProductDetails>
       </Root>
     )
   }
@@ -21,11 +25,12 @@ export class Product extends PureComponent {
  * STYLES
 */
 const Root = styled.div`
-  width: 180px;
-  height: 320px;
+  width: 26%;
+  min-width: 186px;
   box-sizing: border-box;
   background-color: #fff;
-  padding: 12px 16px;
+  padding: 16px;
+  margin: 8px auto;
   &:hover{
     border: solid 1px #d5d5d5;
     cursor: pointer;
@@ -33,26 +38,37 @@ const Root = styled.div`
 `
 
 const ProductPhoto = styled.img`
-  max-width: 100%;
+  width: 100%;
   height: auto;
   min-height: 172px;
-  vertical-align: middle;
   margin: 0 auto 10px;
   display: block;
 `
 const ProductHeading = styled.h2`
-  margin: 0;
-  font-size: 14px;
+  margin: 8px auto;
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
 `
 
 const ProductBrand = styled(ProductHeading)``
 const ProductName = styled(ProductHeading)``
-const ProductType = styled(ProductHeading)``
+const ProductType = styled(ProductHeading)`
+  color: #737373;
+  margin: 12px 0;
+  font-size: .8rem;
+`
 
-const ProductPrice = styled.span``
-const ProductSize = styled.span``
+const ProductDetails = styled.div` 
+  font-size: .7rem;
+  text-align: center;
+`
+const ProductPrice = styled.span`
+  line-height: 1.2;
+`
+const ProductSize = styled.span`
+  line-height: 1.2;
+`
 
 
 export default Product

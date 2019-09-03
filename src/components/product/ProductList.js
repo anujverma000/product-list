@@ -42,7 +42,8 @@ const ProductList = () => {
 const ProductContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-self: flex-end;
 `
 
 export default ProductList
