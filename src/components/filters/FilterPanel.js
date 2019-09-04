@@ -14,10 +14,10 @@ const FilterPanel = () =>
 const Root = styled.div`
   padding: 16px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   
   @media ${ MOBILE } {
-    flex-direction: row;
+    flex-direction: column;  
   }
 `
 export default FilterPanel

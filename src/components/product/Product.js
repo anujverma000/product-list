@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import { MOBILE, TABLET } from '../../styled-guide/device'
 import { LOCALE, CURRENCY } from '../../constants'
 import Rating from './Rating';
 
@@ -32,10 +33,19 @@ const Root = styled.div`
   box-sizing: border-box;
   background-color: #fff;
   padding: 16px;
-  margin: 8px auto;
+  margin: 12px 24px;
   &:hover{
     outline: solid 1px #d5d5d5;
     cursor: pointer;
+  }
+  @media ${ MOBILE } {
+    width: 100%;
+    margin: 0;
+  }
+  @media ${ TABLET } {
+    min-width: 49%;
+    padding: 0;
+    margin: 0;
   }
 `
 
@@ -48,13 +58,18 @@ const ProductPhoto = styled.img`
 `
 const ProductHeading = styled.h2`
   margin: 8px auto;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 600;
   text-align: center;
 `
 
-const ProductBrand = styled(ProductHeading)``
-const ProductName = styled(ProductHeading)``
+const ProductBrand = styled(ProductHeading)`
+  margin-bottom: 4px;
+`
+const ProductName = styled(ProductHeading)`
+  font-size: .8rem;
+  font-weight: 400;
+`
 const ProductType = styled(ProductHeading)`
   color: #737373;
   margin: 12px 0;

@@ -7,7 +7,7 @@ const Container = styled.div`
 
   @media ${ DESKTOP } {
     max-width: 900px;
-    min-width: 900px;
+    width: 100%;
   }
 
   @media ${ TABLET } {

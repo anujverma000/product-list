@@ -8,6 +8,7 @@ const Footer = () =>
 
 const Wrapper = styled.footer`
   border-top: 1px solid #d5d5d5;
+  color: #d5d5d5;
   padding: 24px;
   font-size: 14px;
   text-align: center;

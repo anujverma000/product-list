@@ -34,12 +34,19 @@ module.exports = {
         if(args.sort === "price_desc"){
             products = products.sort((a, b) => a.price > b.price? -1: 1)
         }
-        
+        const offset  = args.offset || 0
+        const limit =  args.limit || DEFAULT_PAGE_SIZE
+
+        const total = products.length;
+        const hasMore = offset + limit < total;
+
         if(args.offset ||  args.limit){
-            let offset  = args.offset || 0
-            let limit =  args.limit || DEFAULT_PAGE_SIZE
             products =  products.slice(offset, offset + limit)
         }
-        return products
+        return {
+            products,
+            total,
+            hasMore
+        }
     }
 }

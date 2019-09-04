@@ -21,11 +21,11 @@ const Wrapper = styled.header`
 const PreHeader = styled.div`
   background-color: #f6f6f6;
   height: 30px; 
-  display: none;
+  display: flex;
+  justify-content: space-between;
   padding: 0 16px;
   @media ${ MOBILE } {
-    display: flex;
-    justify-content: space-between;
+    display: none;  
   }
 `
 const HeaderText = styled.span`

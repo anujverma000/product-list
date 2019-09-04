@@ -3,9 +3,15 @@
 # import Type from "type.graphql"
 
 type Query {
-  products(query: String, brands: [String!], types: [String!], limit: Int, offset: Int, sort: OrderByInput): [Product!]
+  products(query: String, brands: [String!], types: [String!], limit: Int, offset: Int, sort: OrderByInput): ProductResult!
   brands(query: String): [Brand!]
   types(query: String): [Type!]
+}
+
+type ProductResult {
+  products: [Product!]
+  total: Int!
+  hasMore: Boolean!
 }
 
 enum OrderByInput {
