@@ -1,8 +1,10 @@
 FROM node:alpine
 
+RUN yarn global add pm2
+
 WORKDIR /app/
 
-COPY . /app
+ADD . /app
 
 RUN yarn
 RUN yarn build
@@ -10,4 +12,5 @@ RUN yarn build
 WORKDIR /app/server
 RUN yarn
 
-CMD yarn start
+
+CMD ["pm2-runtime", "../process.yml"]
