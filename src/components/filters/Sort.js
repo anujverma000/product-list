@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { selectSort } from '../../actions/filter'
+import { resetPagination } from '../../actions/pagination'
 
-const Sort = ({ selectedSortOrder = '', setSortOrder }) => {
+const Sort = ({ selectedSortOrder = '', setSortOrder, resetPagination }) => {
 
   const [selectedOption, setSelectedOption] = useState(selectedSortOrder);
 
@@ -18,6 +19,7 @@ const Sort = ({ selectedSortOrder = '', setSortOrder }) => {
     setSelectedOption(order)
     if(order){
       setSortOrder(order)
+      resetPagination()
     }
   }
 
@@ -43,6 +45,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setSortOrder: order => dispatch(selectSort(order)),
+  resetPagination: () => dispatch(resetPagination())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sort)

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { selectTypes } from '../../actions/filter'
+import { resetPagination } from '../../actions/pagination'
 import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo-hooks'
 import SelectDropDown from '../../styled-guide/SelectDropDown'
@@ -13,8 +14,16 @@ const GET_TYPES = gql`
   }
 `
 
-const TypeFilter = ({ types, setTypes }) => {
+const TypeFilter = ({ types, setTypes, resetPagination }) => {
+
+  const applyTypeSelection = types => {
+    resetPagination()
+    setTypes(types)
+  }
+
   const { data, error, loading } = useQuery(GET_TYPES)
+  
+  
   if (loading) {
     return <div>Loading...</div>
   }
@@ -22,7 +31,7 @@ const TypeFilter = ({ types, setTypes }) => {
     return <div>Error! {error.message}</div>
   }
 
-  return <SelectDropDown optionsList={ data.types } selectedOptions={ types } selectorText="Type" onSubmit={ setTypes }/>
+  return <SelectDropDown optionsList={ data.types } selectedOptions={ types } selectorText="Product Type" onSubmit={ applyTypeSelection }/>
 }
 
 
@@ -32,6 +41,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setTypes: types => dispatch(selectTypes(types)),
+  resetPagination: () => dispatch(resetPagination())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TypeFilter)

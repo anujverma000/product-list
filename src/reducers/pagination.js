@@ -1,4 +1,4 @@
-import { NEXT_PAGE, PREV_PAGE } from '../actions/pagination'
+import { NEXT_PAGE, PREV_PAGE, RESET_PAGINATION } from '../actions/pagination'
 
 const initialState = {
   currentPage: 0
@@ -18,6 +18,9 @@ const pagination = (state = initialState, action) => {
         ...state,
         currentPage: state.currentPage - 1
       }
+    
+    case RESET_PAGINATION:
+      return initialState
     
     default:
       return state

@@ -21,9 +21,7 @@ const filter = (state = initialState, action) => {
       }
       
     case RESET_ALL:
-      return {
-        ...initialState
-      }
+      return initialState
     
     case SELECT_SORT: 
       return {
