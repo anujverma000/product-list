@@ -17,11 +17,11 @@ const Root = () => (
     <ApolloHooksProvider client={ApolloClient}>
       <ReduxProvider store={store}>
         <App />
-      </ReduxProvider>,
+      </ReduxProvider>
    </ApolloHooksProvider>
   </ApolloProvider>
 )
 
 
-ReactDOM.render(<Root />, document.getElementById('root'))
+ReactDOM.render(<Root/>, document.getElementById('root'))
 serviceWorker.unregister()

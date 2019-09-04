@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { LOCALE, CURRENCY } from '../../constants'
+import Rating from './Rating';
 
 export class Product extends PureComponent {
   render() {
-    const { image, brand, name, type, price, size } = this.props
+    const { image, brand, name, type, price, size, rating } = this.props
     const formattedPrice = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: CURRENCY }).format(price/100)
     return (
       <Root>
@@ -15,6 +16,7 @@ export class Product extends PureComponent {
         <ProductDetails>
           <ProductPrice>{ formattedPrice }</ProductPrice> / <ProductSize>{ size }</ProductSize>
         </ProductDetails>
+        <Rating rating={rating}/>
       </Root>
     )
   }

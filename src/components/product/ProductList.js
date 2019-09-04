@@ -36,7 +36,7 @@ const ProductList = ({ brands, types, sortOrder }) => {
   return (
     <>
       <ResultInfo>
-        Parfum <ResultCount>({data.products.length} Artikel)</ResultCount>
+        Perfume <ResultCount>({data.products.length} article)</ResultCount>
       </ResultInfo>
       <ProductContainer>
         { data.products.length === 0 && <NoResults/> }

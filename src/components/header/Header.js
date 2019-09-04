@@ -5,10 +5,10 @@ import { MOBILE } from '../../styled-guide/device'
 const Header = () => 
   <Wrapper>
     <PreHeader>
-      <HeaderText>GRATIS VERSAND AB 19 €</HeaderText>
-      <HeaderText>2 GRATISPROBEN</HeaderText>
-      <HeaderText>ZERTIFIZIERTER HÄNDLER</HeaderText>
-      <HeaderText>120 TAGE RÜCKGABERECHT</HeaderText>
+      <HeaderText>FREE SHIPPING FROM 19 €</HeaderText>
+      <HeaderText>2 FREE SAMPLES</HeaderText>
+      <HeaderText>CERTIFIED DEALER</HeaderText>
+      <HeaderText>120 DAYS RETURN POLICY</HeaderText>
     </PreHeader>
     <Logo src="https://cdn.flaconi.de/themes/flaconi/assets/20190903130026/images/svg/flaconi-logo.svg"></Logo>
   </Wrapper>
