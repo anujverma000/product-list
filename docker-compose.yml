@@ -2,30 +2,14 @@ version: "3.7"
 
 services:
   
-  product-list-app:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./:/app
-    links:
-      - product-list-server
-    networks:
-      - product-list-network
-
   product-list-server:
     build:
-      context: ./server
+      context: .
       dockerfile: Dockerfile
-    restart: always
     ports:
       - "4000:4000"
-    volumes:
-      - ./server:/server
-      - /server/node_modules
+    environment:
+      - NODE_ENV=production
     networks:
       - product-list-network
 

@@ -52,7 +52,7 @@ const ProductList = ({ brands, types, sortOrder }) => {
 */
 
 const ResultInfo = styled.h1`
-  padding: 10px 10px 6px;
+  padding: 8px 16px;
   color: #292929;
   background-color: #f6f6f6;
 `
