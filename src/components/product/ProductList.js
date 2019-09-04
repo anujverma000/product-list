@@ -4,10 +4,11 @@ import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo-hooks'
 import styled from 'styled-components'
 import Product from './Product'
+import NoResults from './NoResults'
 
 const GET_PRODUCTS = gql`
-  query GET_PRODUCTS($brands: [String!]) {
-    products(brands: $brands) {
+  query GET_PRODUCTS($brands: [String!], $types: [String!]) {
+    products(brands: $brands, types: $types) {
       id,
       name,
       slug,
@@ -21,9 +22,9 @@ const GET_PRODUCTS = gql`
   }
 `;
 
-const ProductList = ({ brands, selectedTypes, sortOrder }) => {
+const ProductList = ({ brands, types, sortOrder }) => {
   const { data, error, loading } = useQuery(GET_PRODUCTS, {
-    variables: { brands }
+    variables: { brands, types }
   })
 
   if (loading) {
@@ -38,7 +39,8 @@ const ProductList = ({ brands, selectedTypes, sortOrder }) => {
         Parfum <ResultCount>({data.products.length} Artikel)</ResultCount>
       </ResultInfo>
       <ProductContainer>
-        {data.products.map(product => <Product key={product.id} {...product}/>)}
+        { data.products.length === 0 && <NoResults/> }
+        { data.products.map(product => <Product key={product.id} {...product}/>) }
       </ProductContainer>
     </>
   )
@@ -72,7 +74,7 @@ const ProductContainer = styled.div`
 
 const mapStateToProps = state => ({
   brands: state.filter.brands.map(brand => brand.name),
-  // selectedTypes: state.filter.types,
+  types: state.filter.types.map(type => type.name),
   // sortOrder: state.sortOrder
 })
 

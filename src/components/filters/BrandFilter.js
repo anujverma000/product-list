@@ -22,7 +22,7 @@ const BrandFilter = ({ brands, setBrands }) => {
     return <div>Error! {error.message}</div>
   }
 
-  return <SelectDropDown optionsList={data.brands} selectedOptions={brands} selectorText="Brand" onSubmit={setBrands}/>
+  return <SelectDropDown optionsList={ data.brands } selectedOptions={ brands } selectorText="Brand" onSubmit={ setBrands }/>
 }
 
 const mapStateToProps = state => ({
