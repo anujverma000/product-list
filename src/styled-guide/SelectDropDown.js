@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from "react"
 import styled from "styled-components"
+import CaretUp from "./CaretUp";
+import CaretDown from "./CaretDown";
 
 const SelectDropDown = ({ optionsList, selectorText, onSubmit }) =>{ 
     const [hidden, setHidden] = useState(true)
@@ -53,7 +55,9 @@ const SelectDropDown = ({ optionsList, selectorText, onSubmit }) =>{
 
     return(
         <Wrapper>
-        <SelectorBox ref={selectorNode} onClick={()=> setHidden(!hidden)}>{selectorText}</SelectorBox>
+        <SelectorBox ref={selectorNode} onClick={()=> setHidden(!hidden)}>
+            {selectorText} {hidden? <CaretUp/>: <CaretDown/> }
+        </SelectorBox>
         {!hidden && 
             <Box ref={node}>
                 <OptionsList>
@@ -82,7 +86,7 @@ const Wrapper = styled.div`
 
 const SelectorBox = styled.div`
     width: 175px;
-    padding-bottom: 5px;
+    padding: 4px;
     cursor: pointer;
     border-bottom: 1px solid #d5d5d5;
 `

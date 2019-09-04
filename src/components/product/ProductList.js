@@ -29,9 +29,14 @@ const ProductList = () => {
     return <div>Error! {error.message}</div>
   }
   return (
-    <ProductContainer>
-      {data.products.map(product => <Product key={product.id} {...product}/>)}
-    </ProductContainer>
+    <>
+      <ResultInfo>
+        Parfum <ResultCount>({data.products.length} Artikel)</ResultCount>
+      </ResultInfo>
+      <ProductContainer>
+        {data.products.map(product => <Product key={product.id} {...product}/>)}
+      </ProductContainer>
+    </>
   )
 }
 
@@ -39,6 +44,20 @@ const ProductList = () => {
  * 
  * STYLES
 */
+
+const ResultInfo = styled.h1`
+  padding: 10px 10px 6px;
+  color: #292929;
+  background-color: #f6f6f6;
+`
+
+const ResultCount = styled.span`
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.28571rem;
+  color: #737373;
+`;
+
 const ProductContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

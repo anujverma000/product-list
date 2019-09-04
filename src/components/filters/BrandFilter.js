@@ -20,7 +20,7 @@ const BrandFilter = () => {
     return <div>Error! {error.message}</div>
   }
 
-  return <SelectDropDown optionsList={data.brands} selectorText="Select Brand"></SelectDropDown>
+  return <SelectDropDown optionsList={data.brands} selectorText="Brand"></SelectDropDown>
 }
 
 export default BrandFilter

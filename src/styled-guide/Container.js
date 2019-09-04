@@ -5,17 +5,17 @@ const Container = styled.div`
   margin: auto;
   font-family: "arial";
 
-  @media ${ MOBILE } {
-    width: 100%;
+  @media ${ DESKTOP } {
+    max-width: 900px;
+    min-width: 900px;
   }
 
   @media ${ TABLET } {
     width: 75%;
   }
 
-  @media ${ DESKTOP } {
-    max-width: 900px;
-    min-width: 900px;
+  @media ${ MOBILE } {
+    width: 100%;
   }
 `
 
