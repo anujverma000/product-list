@@ -5,11 +5,12 @@ import { useQuery } from 'react-apollo-hooks'
 import styled from 'styled-components'
 import Product from './Product'
 import NoResults from './NoResults'
-import LoadMore from './LoadMore';
+import Pagination from './Pagination';
+import { PAGE_SIZE } from '../../constants'
 
 const GET_PRODUCTS = gql`
-  query GET_PRODUCTS($brands: [String!], $types: [String!], $sort: OrderByInput) {
-    products(brands: $brands, types: $types, sort: $sort, limit: 10) {
+  query GET_PRODUCTS($brands: [String!], $types: [String!], $sort: OrderByInput, $limit: Int, $offset: Int) {
+    products(brands: $brands, types: $types, sort: $sort, limit: $limit, offset: $offset) {
       products{
         id,
         name,
@@ -27,17 +28,31 @@ const GET_PRODUCTS = gql`
   }
 `;
 
-const ProductList = ({ brands, types, sort, currentPage }) => {
+
+const ProductList = ({ brands, types, sort, currentPage}) => {
+  const offset = currentPage * PAGE_SIZE;
+  const limit = PAGE_SIZE;
+
   const { data, error, loading } = useQuery(GET_PRODUCTS, {
-    variables: { brands, types, sort }
+    variables: { brands, types, sort, limit, offset }
   })
+
+
   if (loading) {
     return <div>Loading...</div>
   }
+
+
   if (error) {
     return <div>Error! {error.message}</div>
   }
-  const { products : { products, total, hasMore }} = data;
+
+
+  const { products : { products, total }} = data
+  
+  const showPagination = total > PAGE_SIZE
+  const totalPages = Math.ceil(total/PAGE_SIZE);
+  
   return (
     <>
       <ResultInfo>
@@ -47,7 +62,7 @@ const ProductList = ({ brands, types, sort, currentPage }) => {
         { total === 0 && <NoResults/> }
         { products.map(product => <Product key={product.id} {...product}/>) }
       </ProductContainer>
-      { hasMore && <LoadMore currentPage = { currentPage}/> }
+      { showPagination && <Pagination totalPages={ totalPages }/> }
     </>
   )
 }
@@ -77,11 +92,13 @@ const ProductContainer = styled.div`
 `
 
 
-const mapStateToProps = state => ({
-  brands: state.filter.brands.map(brand => brand.name),
-  types: state.filter.types.map(type => type.name),
-  sort: state.filter.sort,
-  currentPage: state.filter.page
-})
+const mapStateToProps = state => {
+  return {
+    brands: state.filter.brands.map(brand => brand.name),
+    types: state.filter.types.map(type => type.name),
+    sort: state.filter.sort,
+    currentPage: state.pagination.currentPage
+  }
+}
 
 export default connect(mapStateToProps)(ProductList)
