@@ -2,6 +2,8 @@ const { DEFAULT_PAGE_SIZE }  = require('../../constants')
 const ProductRepository = require('./product-repository')
 const productRepository = new ProductRepository()
 
+const isArrayNotEmpty = arr => arr && arr.length
+
 module.exports = {
     products: (args) => {
         let products = productRepository.findAll()
@@ -9,11 +11,11 @@ module.exports = {
             products = products.filter(p => p.name.indexOf(args.query) >= 0)
         }
         
-        if(args.brands){
+        if(isArrayNotEmpty(args.brands)){
             products = products.filter(p => args.brands.includes(p.brand))
         }
 
-        if(args.types){
+        if(isArrayNotEmpty(args.types)){
             products = products.filter(p => args.types.includes(p.type))
         }
 

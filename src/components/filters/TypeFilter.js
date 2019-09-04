@@ -20,7 +20,7 @@ const TypeFilter = () => {
     return <div>Error! {error.message}</div>
   }
 
-  return <SelectDropDown optionsList={data.types} selectorText="Type"></SelectDropDown>
+  return <SelectDropDown optionsList={data.types} selectorText="Type" />
 }
 
 export default TypeFilter

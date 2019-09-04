@@ -1,12 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo-hooks'
 import styled from 'styled-components'
 import Product from './Product'
 
 const GET_PRODUCTS = gql`
-  {
-    products {
+  query GET_PRODUCTS($brands: [String!]) {
+    products(brands: $brands) {
       id,
       name,
       slug,
@@ -18,10 +19,13 @@ const GET_PRODUCTS = gql`
       rating
     }
   }
-`
+`;
 
-const ProductList = () => {
-  const { data, error, loading } = useQuery(GET_PRODUCTS)
+const ProductList = ({ brands, selectedTypes, sortOrder }) => {
+  const { data, error, loading } = useQuery(GET_PRODUCTS, {
+    variables: { brands }
+  })
+
   if (loading) {
     return <div>Loading...</div>
   }
@@ -65,4 +69,11 @@ const ProductContainer = styled.div`
   align-self: flex-end;
 `
 
-export default ProductList
+
+const mapStateToProps = state => ({
+  brands: state.filter.brands.map(brand => brand.name),
+  // selectedTypes: state.filter.types,
+  // sortOrder: state.sortOrder
+})
+
+export default connect(mapStateToProps)(ProductList)

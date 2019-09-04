@@ -3,9 +3,9 @@ import styled from "styled-components"
 import CaretUp from "./CaretUp";
 import CaretDown from "./CaretDown";
 
-const SelectDropDown = ({ optionsList, selectorText, onSubmit }) =>{ 
+const SelectDropDown = ({ optionsList, selectedOptions = [], selectorText, onSubmit }) =>{ 
     const [hidden, setHidden] = useState(true)
-    const [selectedItems, setSelectedItems] = useState([])
+    const [selectedItems, setSelectedItems] = useState(selectedOptions)
 
     const node = useRef()
     const selectorNode = useRef()
@@ -34,9 +34,8 @@ const SelectDropDown = ({ optionsList, selectorText, onSubmit }) =>{
     const submitAction = () => {
         if(onSubmit){
             onSubmit(selectedItems)
-        }else{
-            setHidden(true)
         }
+        setHidden(true);
     }
     const onChange = ({ option }) => {
         if(isOptionSelected(option)){
@@ -48,7 +47,7 @@ const SelectDropDown = ({ optionsList, selectorText, onSubmit }) =>{
 
     const isOptionSelected  = (option) => selectedItems.filter(op => op.name === option.name).length >0
 
-    const removeFromSelectedList  = (option) => setSelectedItems(selectedItems.filter(op => op.name === option.name))
+    const removeFromSelectedList  = (option) => setSelectedItems(selectedItems.filter(op => op.name !== option.name))
 
     const addToSelectedList = option => setSelectedItems(selectedItems.concat(option));
 
