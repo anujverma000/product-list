@@ -8,7 +8,7 @@ export class Product extends PureComponent {
     const formattedPrice = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: CURRENCY }).format(price/100)
     return (
       <Root>
-        <ProductPhoto src={ image } loading="lazy" alt={ name }/>
+        <ProductPhoto intrinsicsize="215x251" src={ image } loading="lazy" alt={ name } width="186"/>
         <ProductBrand>{ brand }</ProductBrand>
         <ProductName>{ name }</ProductName>
         <ProductType>{ type }</ProductType>

@@ -44,7 +44,6 @@ const SelectDropDown = ({ optionsList, selectorText, onSubmit }) =>{
         }else{
             addToSelectedList(option)
         }
-        console.log(selectedItems)
     }
 
     const isOptionSelected  = (option) => selectedItems.filter(op => op.name === option.name).length >0

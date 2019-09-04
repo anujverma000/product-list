@@ -1,7 +1,7 @@
 const break_point = {
   mobile: '425px',
   tablet: '768px',
-  desktop: '120px',
+  desktop: '1200px',
 }
 
 export const MOBILE = `(min-width: ${break_point.mobile})`
