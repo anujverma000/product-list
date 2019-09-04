@@ -20,7 +20,7 @@ const Rating = ({ rating }) => {
   const getFullStars = fullStarCount => {
     let stars = []
     for(let i=0; i < fullStarCount; i++){
-      stars.push(<FillStar>&#x2B51;</FillStar>)
+      stars.push(<FillStar key={i}>&#x2B51;</FillStar>)
     }
     return stars
   }
@@ -28,7 +28,7 @@ const Rating = ({ rating }) => {
   const getEmptyStars = fullStarCount => {
     let stars = []
     for(let i=0; i < fullStarCount; i++){
-      stars.push(<EmptyStar>&#x2B51;</EmptyStar>)
+      stars.push(<EmptyStar key={i}>&#x2B51;</EmptyStar>)
     }
     return stars
   }
@@ -51,14 +51,13 @@ const Rating = ({ rating }) => {
 
 const Star = styled.div`
   display: inline-block;
-  width: 13px;
-  height: 26px;
+  font-size: 14px;
 `
 const FillStar = styled(Star)`
   color: #262624;
 `
 const EmptyStar = styled(Star)`
-  color: transparent;
+  color: #ddd;
 `
 const PartialStarWrapper = styled(Star)`
   position: relative;
@@ -66,6 +65,7 @@ const PartialStarWrapper = styled(Star)`
 const PartialStar = styled(Star)`
   position: absolute;
   overflow: hidden; 
+  color: #262624;
   width: ${({width}) => `${width}%`};
   left: 0;
 `

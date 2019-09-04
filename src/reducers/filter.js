@@ -1,4 +1,4 @@
-import { SELECT_BRAND, SELECT_TYPE, RESET_ALL } from '../actions/filter'
+import { SELECT_BRAND, SELECT_TYPE, RESET_ALL, SELECT_SORT } from '../actions/filter'
 
 const initialState = {
   brands: [],
@@ -24,7 +24,13 @@ const filter = (state = initialState, action) => {
       return {
         ...initialState
       }
-
+    
+    case SELECT_SORT: 
+      return {
+        ...state,
+        sort: action.payload
+      }
+    
     default:
       return state
   }

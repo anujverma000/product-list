@@ -7,8 +7,8 @@ import Product from './Product'
 import NoResults from './NoResults'
 
 const GET_PRODUCTS = gql`
-  query GET_PRODUCTS($brands: [String!], $types: [String!]) {
-    products(brands: $brands, types: $types) {
+  query GET_PRODUCTS($brands: [String!], $types: [String!], $sort: OrderByInput) {
+    products(brands: $brands, types: $types, sort: $sort) {
       id,
       name,
       slug,
@@ -22,9 +22,9 @@ const GET_PRODUCTS = gql`
   }
 `;
 
-const ProductList = ({ brands, types, sortOrder }) => {
+const ProductList = ({ brands, types, sort }) => {
   const { data, error, loading } = useQuery(GET_PRODUCTS, {
-    variables: { brands, types }
+    variables: { brands, types, sort }
   })
 
   if (loading) {
@@ -75,7 +75,7 @@ const ProductContainer = styled.div`
 const mapStateToProps = state => ({
   brands: state.filter.brands.map(brand => brand.name),
   types: state.filter.types.map(type => type.name),
-  // sortOrder: state.sortOrder
+  sort: state.filter.sort
 })
 
 export default connect(mapStateToProps)(ProductList)
