@@ -12,6 +12,6 @@ const Wrapper = styled.footer`
   padding: 24px;
   font-size: 14px;
   text-align: center;
-  margin-top: 150px;
+  margin-top: 64px;
 `
 export default Footer
