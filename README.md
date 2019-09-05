@@ -1,68 +1,107 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Get started
 
-## Available Scripts
+Follow the project backlog here. https://github.com/anujverma000/product-list/projects/1
 
-In the project directory, you can run:
+---
+Its a simple project to provide a responsive frontend to show a multi-column list of products for an e-commerce website as you can see on https://www.flaconi.de/parfum/.
 
-### `npm start`
+The product entities have the following structure and will be provided in an array of products:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```js
+{
+  id: <String>,
+  name: <String>,
+  slug: <String>,
+  brand: <String>,
+  type: <String>,
+  image: <String>,
+  price: <Integer>,
+  size: <String>,
+  rating: <Integer>
+}
+```
+ - `id` is the product SKU
+ - `image` contains a full URL
+ - `price` is in cents
+ - `rating` with a scale of 0 to 100 (Displayed with 5 stars rating)
 
-### `npm test`
+ ## Maintainers
+  - @anujverma \<anujverma000@gmail.com\>
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Required functionality:
+ - [x] Products data is pulled in from a JSON like server/resources/productlist.json.
+ - [x] Products are display in a responsive multi-column layout for mobile, tablet & desktop.
+ - [x] Product images should scale accordingly.
+ - [x] The list of products is wrapped by some basic layout.
+ - [x] You will provide some methods to filter the list of products by brand and type.
+## Technical constraints:
+ - [x] You should use React, Styled components💅, state management is a matter of your choice.
+ - [x] You need to show some knowledge of HTML5, modern JavaScript(ES6) or ~~TypeScript~~.
+ - [x] You will provide a working Dockerfile to run your project
+## Bonus points:
+  - [x] You will provide some methods to sort the list of products.
+  - [x] You will add some kind of pagination / ~~load more~~ functionality.
+  - [x] You will write some basic tests for your JavaScript code using Jest.
+  - [x] You create simple GraphQL server to get the products
+---
+## Implementation Details
+ - Follow the project backlog here. https://github.com/anujverma000/product-list/projects/1
+ - Project is divided in two major components
 
-### `npm run build`
+  ### Client  
+  Its React Client application bootstraped using CRA.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  #### Following tech stack is used to implement client side app
+  - React
+  - Apollo
+  - React Apollo
+  - React Apollo Hooks
+  - Redux 
+  - Styled Components
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+ ### Server  
+  Its Express GraphQL Server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  #### Following tech stack is used to implement server side app
+  - Express
+  - GraphQL
+  - Express GraphQL
+  - GraphQL Tags
+  - GraphQL Imports
+  - GraphQL Tools
+  - Morgan`( for logging )`
+  - PM2 `( in docker only to manage node processes )`
 
-### `npm run eject`
+### Running Locally
+- Get the code. 
+  ```sh 
+    git clone git@github.com:anujverma000/product-list.git 
+  ```
+- Follow this README :)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   - #### Using docker
+    
+  ```docker
+    docker-compose up --build
+  ```
+     - Go to http://localhost:4000
+     - Server also has a health check endpoint at http://localhost:4000/health
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  - #### Dev
+    - #### Server
+    ```sh
+      cd product-list/server
+      yarn
+      yarn start
+    ```
+      - Server will start at http://localhost:4000
+      - Browse Graphiql at http://localhost:4000/graphql
+      - Server also has a health check endpoint at http://localhost:4000/health 
+    - #### Client
+    ```sh
+      cd product-list
+      yarn
+      yarn start
+    ```
+      - Go to http://localhost:3000
