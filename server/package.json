@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "author": "Anuj Verma<anujverma000@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
   "dependencies": {
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -20,5 +20,8 @@
     "graphql-tools": "^4.0.5",
     "morgan": "^1.9.1"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": "10.x"
+  }
 }
