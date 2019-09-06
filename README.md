@@ -82,7 +82,7 @@ The product entities have the following structure and will be provided in an arr
 
    - #### Using docker
     
-  ```docker
+  ```sh
     docker-compose up --build
   ```
      - Go to http://localhost:4000
@@ -105,3 +105,9 @@ The product entities have the following structure and will be provided in an arr
       yarn start
     ```
       - Go to http://localhost:3000
+    
+    #### Integration Tests using Cypress
+      ```sh
+        docker-compose up
+        yarn cypress:dev
+      ```

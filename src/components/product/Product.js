@@ -9,7 +9,7 @@ export class Product extends PureComponent {
     const { image, brand, name, type, price, size, rating } = this.props
     const formattedPrice = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: CURRENCY }).format(price/100)
     return (
-      <Root>
+      <Root data-test='product-item'>
         <ProductPhoto intrinsicsize="215x251" src={ image } loading="lazy" alt={ name } width="186"/>
         <ProductBrand>{ brand }</ProductBrand>
         <ProductName>{ name }</ProductName>
